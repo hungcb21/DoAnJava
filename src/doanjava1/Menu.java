@@ -5,6 +5,7 @@
  */
 package doanjava1;
 
+import doanjava1.Model.NhanVien;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -40,12 +41,14 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         btnKhachHang = new javax.swing.JButton();
         btnXe = new javax.swing.JButton();
         btnTraXe = new javax.swing.JButton();
         btnDoanhThu = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         jMenu1.setText("jMenu1");
@@ -59,6 +62,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         jMenuItem4.setText("jMenuItem4");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +88,11 @@ public class Menu extends javax.swing.JFrame {
         btnXe.setText("Quản lý xe");
         btnXe.setCursor(new java.awt.Cursor(java.awt.Cursor.SE_RESIZE_CURSOR));
         btnXe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXeActionPerformed(evt);
+            }
+        });
 
         btnTraXe.setBackground(new java.awt.Color(102, 102, 255));
         btnTraXe.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
@@ -90,6 +100,11 @@ public class Menu extends javax.swing.JFrame {
         btnTraXe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/TraXe.png"))); // NOI18N
         btnTraXe.setText("Trả xe");
         btnTraXe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTraXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraXeActionPerformed(evt);
+            }
+        });
 
         btnDoanhThu.setBackground(new java.awt.Color(102, 102, 255));
         btnDoanhThu.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
@@ -97,6 +112,11 @@ public class Menu extends javax.swing.JFrame {
         btnDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/DoanhThu.png"))); // NOI18N
         btnDoanhThu.setText("Quản lý doanh thu");
         btnDoanhThu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoanhThuActionPerformed(evt);
+            }
+        });
 
         btnNhanVien.setBackground(new java.awt.Color(102, 102, 255));
         btnNhanVien.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
@@ -104,16 +124,37 @@ public class Menu extends javax.swing.JFrame {
         btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/NhanVien.png"))); // NOI18N
         btnNhanVien.setText("Quản lý nhân viên");
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Motor.png"))); // NOI18N
+        jButton1.setText("Thuê xe");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-            .addComponent(btnXe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnTraXe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKhachHang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                    .addComponent(btnXe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTraXe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDoanhThu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNhanVien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(751, 751, 751))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,23 +164,25 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(btnXe)
                 .addGap(20, 20, 20)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20)
                 .addComponent(btnTraXe)
                 .addGap(20, 20, 20)
-                .addComponent(btnDoanhThu)
-                .addGap(20, 20, 20)
                 .addComponent(btnNhanVien)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(btnDoanhThu)
+                .addGap(0, 43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 948, Short.MAX_VALUE)
+            .addGap(0, 12, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,7 +191,7 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(1, 1, 1)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,7 +205,45 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+        QuanLyKhachHang kh = new QuanLyKhachHang();
+        kh.show();
+        this.dispose();
     }//GEN-LAST:event_btnKhachHangActionPerformed
+
+    private void btnXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXeActionPerformed
+        // TODO add your handling code here:
+        QuanLyXe xe = new QuanLyXe();
+        xe.show();
+        this.dispose();
+    }//GEN-LAST:event_btnXeActionPerformed
+
+    private void btnDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThuActionPerformed
+        // TODO add your handling code here:
+        QuanLyDoanhThu dt = new QuanLyDoanhThu();
+        dt.show();
+        this.dispose();
+    }//GEN-LAST:event_btnDoanhThuActionPerformed
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        // TODO add your handling code here:
+        QuanLyNhanVien nv = new QuanLyNhanVien();
+        nv.show();
+        this.dispose();
+    }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void btnTraXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraXeActionPerformed
+        // TODO add your handling code here:
+        TraXe tx = new TraXe();
+        tx.show();
+        this.dispose();
+    }//GEN-LAST:event_btnTraXeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ThueXe tx = new ThueXe();
+        tx.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,11 +311,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnTraXe;
     private javax.swing.JButton btnXe;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

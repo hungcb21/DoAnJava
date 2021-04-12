@@ -100,6 +100,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -265,6 +266,13 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             });
             jScrollPane2.setViewportView(tblNhanVien);
 
+            jButton1.setText("Quay lại");
+            jButton1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton1ActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -291,11 +299,17 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jScrollPane2)))
                     .addContainerGap())
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jButton1)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(9, 9, 9)
+                    .addComponent(jButton1)
+                    .addGap(18, 18, 18)
                     .addComponent(jLabel1)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,7 +331,32 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     private void txtTenNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenNVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenNVActionPerformed
-
+        void themAccNv(){
+                  try {
+            if(txtDiaChi.getText().isEmpty()||txtLuong.getText().isEmpty()||txtMaNV.getText().isEmpty()
+                 )
+            {
+           JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin");
+        }
+           else
+            {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://DESKTOP-QEN4LJI;databaseName=QLTHUEXE;user=sa;password=12";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String query  ="INSERT into ACC(ID,PASS,CHUCVU) values (?,?,?)";
+            PreparedStatement pst = con.prepareCall(query);
+             pst.setString(1, txtMaNV.getText().toUpperCase());
+             pst.setString(2, txtSdt.getText());
+             pst.setString(3, "Nhân viên");
+            pst.execute();
+            DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
+            model.setRowCount(0);
+            show_NV();
+            }
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, "Thêm nhân viên không thành công");
+        }
+        }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
               try {
@@ -348,12 +387,14 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             }
             pst.setString(5, gt);
             pst.setString(6, txtLuong.getText());
+            themAccNv();
             txtDiaChi.setText("");
             txtLuong.setText("");
             txtMaNV.setText("");
             txtSdt.setText("");
             txtTenNV.setText("");
             pst.execute();
+            
             JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công");
             DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
             model.setRowCount(0);
@@ -481,6 +522,13 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Menu mn = new Menu();
+        mn.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -524,6 +572,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
