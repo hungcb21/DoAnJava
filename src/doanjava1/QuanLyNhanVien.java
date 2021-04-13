@@ -359,13 +359,19 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+            String LuongPattern = "[1-9]";
+            String SDTPattenrn = "[1-9]{10,10}";
+            String HoTenPa = "[a-Z]";
               try {
             if(txtDiaChi.getText().isEmpty()||txtLuong.getText().isEmpty()||txtMaNV.getText().isEmpty()
                  )
             {
            JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin");
-        }
-           else
+        } else{
+                if (!(txtLuong.getText().matches(LuongPattern)) || !(txtSdt.getText().matches(SDTPattenrn)) || !(txtTenNV.getText().matches(HoTenPa))) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng thông tin Lương, SDT, Họ tên");
+                
+                } else
             {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String connectionUrl = "jdbc:sqlserver://DESKTOP-QEN4LJI;databaseName=QLTHUEXE;user=sa;password=12";
@@ -400,6 +406,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             model.setRowCount(0);
             show_NV();
             }
+            }
         } catch (Exception e) {
           JOptionPane.showMessageDialog(null, "Thêm nhân viên không thành công");
         }
@@ -407,7 +414,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
-         txtDiaChi.setText("");
+            txtDiaChi.setText("");
             txtLuong.setText("");
             txtMaNV.setText("");
             txtSdt.setText("");
@@ -416,13 +423,19 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+            String LuongPattern = "[1-9]";
+            String SDTPattenrn = "[1-9]{10,10}";
+            String HoTenPa = "[a-Z]";
                 try {
             if(txtDiaChi.getText().isEmpty()||txtLuong.getText().isEmpty()||txtMaNV.getText().isEmpty()
                  )
             {
            JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin");
-        }
-           else
+        }   else{
+                if (!(txtLuong.getText().matches(LuongPattern)) || !(txtSdt.getText().matches(SDTPattenrn)) || !(txtTenNV.getText().matches(HoTenPa))) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng thông tin Lương, SDT, Họ tên");
+                
+                } else
             {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String connectionUrl = "jdbc:sqlserver://DESKTOP-QEN4LJI;databaseName=QLTHUEXE;user=sa;password=12";
@@ -455,6 +468,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
             model.setRowCount(0);
             show_NV();
+            }
             }
         } catch (Exception e) {
           JOptionPane.showMessageDialog(null, "Sửa nhân viên không thành công");

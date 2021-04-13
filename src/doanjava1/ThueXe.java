@@ -487,11 +487,17 @@ public class ThueXe extends javax.swing.JFrame {
 
     private void btnThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThueActionPerformed
         // TODO add your handling code here:
+            String GiaPattern = "[1-9]";
+            String TGPattenrn = "[1-9]";
         if(txtMaxe.getText().isEmpty()||txtDonGia.getText().isEmpty()||txtMaHD.getText().isEmpty()
                 ||txtTG.getText().isEmpty()||txtTien.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin");
-        }
+        } else{
+                if (!(txtDonGia.getText().matches(GiaPattern)) || !(txtTG.getText().matches(TGPattenrn))) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng thông tin Lương, SDT, Họ tên");
+                
+                }
         else
         {
            
@@ -504,7 +510,7 @@ public class ThueXe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Thuê xe không thành công");
             } 
         
-            
+        }
         }
     }//GEN-LAST:event_btnThueActionPerformed
 

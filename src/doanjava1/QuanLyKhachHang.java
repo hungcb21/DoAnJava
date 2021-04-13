@@ -317,13 +317,18 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+            String CMNDPattern = "[1-9]{9,12}";
+            String SDTPattenrn = "[1-9]{10,10}";
+            String HoTenPa = "[a-Z]";
         try {
             if(txtCMND.getText().isEmpty()||txtDiaChi.getText().isEmpty()||txtMaKh.getText().isEmpty()
                 ||txtSdt.getText().isEmpty()||txtTenKH.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin");
-            }
-            else
+            } else{
+                if (!(txtCMND.getText().matches(CMNDPattern)) || !(txtSdt.getText().matches(SDTPattenrn)) || !(txtTenKH.getText().matches(HoTenPa))) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng thông tin CMND, SDT, Họ tên");
+                } else
             {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 String connectionUrl = "jdbc:sqlserver://DESKTOP-QEN4LJI;databaseName=QLTHUEXE;user=sa;password=12";
@@ -347,6 +352,7 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
                 model.setRowCount(0);
                 show_KhachHang();
+            } 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Sửa khách hàng không thành công");
@@ -356,12 +362,17 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         try {
+            String CMNDPattern = "[1-9]{9,12}";
+            String SDTPattenrn = "[1-9]{10,10}";
+            String HoTenPa = "[a-Z]";
             if(txtCMND.getText().isEmpty()||txtDiaChi.getText().isEmpty()||txtMaKh.getText().isEmpty()
                 ||txtSdt.getText().isEmpty()||txtTenKH.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin");
-            }
-            else
+            } else{
+                if (!(txtCMND.getText().matches(CMNDPattern)) || !(txtSdt.getText().matches(SDTPattenrn)) || !(txtTenKH.getText().matches(HoTenPa))) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng thông tin CMND, SDT, Họ tên");
+                } else
             {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 String connectionUrl = "jdbc:sqlserver://DESKTOP-QEN4LJI;databaseName=QLTHUEXE;user=sa;password=12";
@@ -383,6 +394,7 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
                 model.setRowCount(0);
                 show_KhachHang();
+            }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Thêm khách hàng không thành công");
